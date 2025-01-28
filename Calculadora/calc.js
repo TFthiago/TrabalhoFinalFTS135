@@ -9,13 +9,13 @@ function calcularRacaoCao(porte, peso) {
 
     switch (porte) {
         case "P":
-            quantidadeRacao = peso <= 15 ? peso * 10 : 0;
+            quantidadeRacao = peso <= 10 ? peso * 10 : 0;
             break;
         case "M":
-            quantidadeRacao = (peso > 15 && peso <= 30) ? peso * 20 : 0;
+            quantidadeRacao = (peso > 10 && peso <= 25) ? peso * 20 : 0;
             break;
         case "G":
-            quantidadeRacao = peso > 30 ? peso * 30 : 0;
+            quantidadeRacao = peso > 25 ? peso * 30 : 0;
             break;
         default:
             return "Por favor digite um tamanho suportado: P, M ou G";
