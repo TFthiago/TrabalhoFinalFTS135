@@ -23,7 +23,7 @@ describe('Testes para a calculadora de ração', () => {
     })
 
 
-//TESTES NEGATIVOS
+// TESTES NEGATIVOS
 
     it('Teste negativo valor não suportado // > 100', () => {
 
@@ -85,6 +85,38 @@ describe('Testes para a calculadora de ração', () => {
     test.each(listaNegCor)("Teste negativo para porte %s e peso %f (Peso correspondente)", (porte,peso) => {
 
         expect(Calculadora.calcularRacaoCao(porte,peso)).toBe("Peso não corresponde ao porte informado");
+    })
+
+
+// TESTES POSITIVOS COM CSV
+
+    let massaPositivoPeq = require("../../csvToJson/convMassaPosP")
+
+    it.each(massaPositivoPeq.array.map(elem => [
+        elem.porte,
+        elem.peso
+    ]))("Teste positivo para porte %s e peso %f", (porte,peso) => {
+        expect(Calculadora.calcularRacaoCao(porte,peso)).toBe(`A quantidade de ração ideal deverá ser de ${(peso * 10).toFixed(2)} gramas`)
+    })
+
+
+    let massaPositivoMed = require("../../csvToJson/convMassaPosM")
+
+    it.each(massaPositivoMed.array.map(elem => [
+        elem.porte,
+        elem.peso
+    ]))("Teste positivo para porte %s e peso %f", (porte,peso) => {
+        expect(Calculadora.calcularRacaoCao(porte,peso)).toBe(`A quantidade de ração ideal deverá ser de ${(peso * 20).toFixed(2)} gramas`)
+    })
+
+
+    let massaPositivoGran = require("../../csvToJson/convMassaPosG")
+
+    it.each(massaPositivoGran.array.map(elem => [
+        elem.porte,
+        elem.peso
+    ]))("Teste positivo para porte %s e peso %f", (porte,peso) => {
+        expect(Calculadora.calcularRacaoCao(porte,peso)).toBe(`A quantidade de ração ideal deverá ser de ${(peso * 30).toFixed(2)} gramas`)
     })
 
 })
