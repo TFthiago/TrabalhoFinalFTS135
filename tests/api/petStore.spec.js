@@ -4,15 +4,6 @@ const testData = require('./testData');
 describe('Testes da PetStore Swagger', () => {
     const request = supertest("https://petstore.swagger.io/v2")
 
-    // let petId
-    // let petName
-    // let petStatus
-    // let userId
-    // let sellId
-    // let sellQuant
-    // let sellStatus
-    // let tagName
-
     it('Teste cadastro do gato Bichento (POST)', () => {
         const jsonbody = require("../../vendors/json/petPost.json")
 
