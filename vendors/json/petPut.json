@@ -1,0 +1,18 @@
+{
+    "id": 5320261,
+    "category": {
+      "id": 2,
+      "name": "gato"
+    },
+    "name": "Bichento",
+    "photoUrls": [
+      "https://pm1.aminoapps.com/6299/5bc470dd08467db0965426772270b9d90b60cef1_00.jpg"
+    ],
+    "tags": [
+      {
+        "id": 12,
+        "name": "Persian"
+      }
+    ],
+    "status": "sold"
+  }
