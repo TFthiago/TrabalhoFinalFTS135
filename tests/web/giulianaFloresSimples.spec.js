@@ -22,36 +22,33 @@ describe('', () => {
         await driver.findElement(By.id("txtDsKeyWord")).sendKeys("Orquídea Mine Rara Rosa")
         
         let elementAutoComp = await driver.findElement(By.css(".autocomplete_completionListElement"))
-        await driver.wait(until.elementIsVisible(elementAutoComp), 20000);
-        await elementAutoComp.click();
+        await driver.wait(until.elementIsVisible(elementAutoComp), 20000)
+        await elementAutoComp.click()
 
         //Primeira verificação do nome
-        let elementName1 = await driver.findElement(By.css(".jq-product-name")).getText();
-        await expect(elementName1).toBe("ORQUÍDEA MINE RARA ROSA");
+        let elementName1 = await driver.findElement(By.css(".jq-product-name")).getText()
+        await expect(elementName1).toBe("ORQUÍDEA MINE RARA ROSA")
 
         //Primeira verificação do preço
-        let elementPrice1 = await driver.findElement(By.css(".precoPor_prod")).getText();
-        await expect(elementPrice1).toBe("R$ 182,90");
+        let elementPrice1 = await driver.findElement(By.css(".precoPor_prod")).getText()
+        await expect(elementPrice1).toBe("R$ 182,90")
 
         await driver.findElement(By.id("ContentSite_txtZip")).click()
         await driver.findElement(By.id("ContentSite_txtZip")).sendKeys("57010003")
         await driver.findElement(By.css(".jOpenShippingPopup")).click()
         
         let elementCalend = await driver.findElement(By.css(".jSelectedMonth"))
-        await driver.wait(until.elementIsVisible(elementCalend), 20000);
-        await driver.findElement(By.css(".selectDate")).click()
+        await driver.wait(until.elementIsVisible(elementCalend), 20000)
+    
         await driver.findElement(By.css("[class = 'btOk jConfirmShippingData']")).click()
 
         //Segunda verificação do nome
-        let elementName2 = await driver.findElement(By.css(".prodBasket_nome")).getText();
-        await expect(elementName2).toBe("Orquídea Mine Rara Rosa");
+        let elementName2 = await driver.findElement(By.css(".prodBasket_nome")).getText()
+        await expect(elementName2).toBe("Orquídea Mine Rara Rosa")
 
         //Segunda verificação do preço
-         let elementPrice2 = await driver.findElement(By.css(".precoPor_basket")).getText();
-         await expect(elementPrice2).toBe("R$ 182,90");
-
-        //.prodBasket_nome
-        
+         let elementPrice2 = await driver.findElement(By.css(".precoPor_basket")).getText()
+         await expect(elementPrice2).toBe("R$ 182,90")
     
     })
 })
