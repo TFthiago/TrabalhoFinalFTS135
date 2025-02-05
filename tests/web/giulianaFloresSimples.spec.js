@@ -1,6 +1,6 @@
 const { Builder, By, Browser, until } = require("selenium-webdriver")
 
-describe('', () => {
+describe('Giuliana Flores webtest', () => {
     let driver
     let url = "https://www.giulianaflores.com.br"
 
