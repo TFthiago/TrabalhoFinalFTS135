@@ -1,4 +1,4 @@
-const Calculadora = require("../../Calculadora/calc")
+const Calculadora = require("../../src/calc")
 
 describe('Testes para a calculadora de ração', () => {
     
