@@ -19,14 +19,13 @@ After(async function() {
     await driver.executeScript("window.localStorage.clear();");
     await driver.executeScript("window.sessionStorage.clear();");
     await driver.quit()
-    
 })
 
 Given('O Usuário tenha acessado a página home', async function () {
     await driver.get(url)
 })
 
-When('ele pesquisa pelo item {string}', async function (orquidea) {
+When('ele pesquisa pelo item {string} de valor {string}', async function (orquidea,valor) {
   //Pesquisar o item Orquídea Mine Rara Rosa
     await driver.findElement(By.id("txtDsKeyWord")).click()
     await driver.findElement(By.id("txtDsKeyWord")).sendKeys(orquidea)
@@ -34,17 +33,17 @@ When('ele pesquisa pelo item {string}', async function (orquidea) {
     let elementAutoComp = await driver.findElement(By.css(".autocomplete_completionListElement"))
     await driver.wait(until.elementIsVisible(elementAutoComp), 20000)
     await elementAutoComp.click()
-})
 
-When('acrescenta no carrinho', async function () {
   //Primeira validação do nome
     let elementName1 = await driver.findElement(By.css(".jq-product-name")).getText()
     assert.strictEqual(elementName1,"ORQUÍDEA MINE RARA ROSA")
-
+  
   //Primeira validação do preço
     let elementPrice1 = await driver.findElement(By.css(".precoPor_prod")).getText()
-    assert.strictEqual(elementPrice1,"R$ 182,90")
+    assert.strictEqual(elementPrice1,valor)
+})
 
+When('acrescenta no carrinho', async function () {
   //Preencher campo do CEP  
     await driver.findElement(By.id("ContentSite_txtZip")).click()
     await driver.findElement(By.id("ContentSite_txtZip")).sendKeys("57010003")
@@ -54,7 +53,7 @@ When('acrescenta no carrinho', async function () {
     let elementCalend = await driver.findElement(By.css(".jSelectedMonth"))
     await driver.wait(until.elementIsVisible(elementCalend), 20000)
 
-    await driver.findElement(By.css("[class = 'btOk jConfirmShippingData']")).click()
+    await driver.findElement(By.id("btConfirmShippingData")).click()
 
   //Segunda validação do nome
     let elementName2 = await driver.findElement(By.css(".prodBasket_nome")).getText()
@@ -65,7 +64,7 @@ When('acrescenta no carrinho', async function () {
     assert.strictEqual(elementPrice2,"R$ 182,90")
 })
 
-When('depois por {string}', async function (margaridas) {
+When('depois por {string} de valor {string}', async function (margaridas,valor) {
   //Retorno a página home
     await driver.findElement(By.css(".logo_checkout")).click()
 
@@ -86,17 +85,16 @@ When('depois por {string}', async function (margaridas) {
     await driver.wait(until.elementIsVisible(elementAutoComp), 20000)
     await elementAutoComp.click()
 
-})
-
-When('realiza o mesmo procedimento', async function () {
   //Primeira validação do nome
     let elementName3 = await driver.findElement(By.css(".jq-product-name")).getText()
     assert.strictEqual(elementName3,"BUQUÊ MAGNIFICAS MARGARIDAS AMARELAS")
 
   //Primeira validação do preço
     let elementPrice3 = await driver.findElement(By.css(".precoPor_prod")).getText()
-    assert.strictEqual(elementPrice3,"R$ 99,90")
+    assert.strictEqual(elementPrice3,valor)
+})
 
+When('realiza o mesmo procedimento', async function () {
     await driver.findElement(By.id("ContentSite_lbtBuy")).click()
 
   //Data de entrega  

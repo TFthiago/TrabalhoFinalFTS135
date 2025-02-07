@@ -1,5 +1,4 @@
 const BasePage = require("./BasePage")
-
 const By = require("selenium-webdriver".By)
 
 class HomePage extends BasePage {
@@ -12,15 +11,26 @@ class HomePage extends BasePage {
         this.thrdFooter = By.css(".third-footer")
     }
 
+
+    async selecionaBarraPesquisa(){
+        await this.driver.findElement(this.barraPesquisa).click()
+    }
+
+    async pesquisaProduto(produto){
+        await this.driver.findElement(this.barraPesquisa).sendKeys(produto)
+    }
+
+    async selecionaAutoComplete(){
+        await this.driver.findElement(this.elementAutoComp).click()
+    }
+
+    async esperarElementoLogo(){
+        await this.driver.wait(until.elementIsVisible(this.logoLink), 20000)
+    }
+
+    async esperarElementoFooter(){
+        await this.driver.wait(until.elementIsVisible(this.thrdFooter), 20000)
+    }
 }
 
-
-// constructor(driver){
-//     super(driver) // chama a super classe BasePage e passa o Selenium
-//     // mapeamos cada elemento da tela (no caso 4 deles)
-//     this.linkDaSemana = By.linkText("destination of the week! The Beach!");
-//     this.dropdownOrigem = By.name("fromPort");
-//     this.dropdownDestino = By.name("toPort");
-//     this.btnProcurarVoos = By.css(".btn-primary");
-// }
-
+export default HomePage
