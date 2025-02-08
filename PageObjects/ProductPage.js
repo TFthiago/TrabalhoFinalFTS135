@@ -1,5 +1,5 @@
 const BasePage = require("./BasePage")
-const By = require("selenium-webdriver".By)
+const { By,until } = require("selenium-webdriver")
 
 class ProductPage extends BasePage {
 
@@ -7,7 +7,7 @@ class ProductPage extends BasePage {
         super(driver)
         this.productName = By.css(".jq-product-name")
         this.productPrice = By.css(".precoPor_prod")
-        this.campoCep = By.css("ContentSite_txtZip")
+        this.campoCep = By.id("ContentSite_txtZip")
         this.btnOkCep = By.css(".jOpenShippingPopup")
         this.btnAddCart = By.id("ContentSite_lbtBuy")
         this.elementoData = By.css(".jSelectedMonth")
@@ -16,11 +16,11 @@ class ProductPage extends BasePage {
     }
 
     async validaProdName(){
-        await this.driver.findElement(this.productName).getText()
+        return await this.driver.findElement(this.productName).getText()
     }
 
     async validaProdPrice(){
-        await this.driver.findElement(this.productPrice).getText()
+        return await this.driver.findElement(this.productPrice).getText()
     }
 
     async selecionaCampoCep(){
@@ -40,7 +40,7 @@ class ProductPage extends BasePage {
     }
 
     async esperaElementoData(){
-        await this.driver.wait(until.elementIsVisible(this.elementoData), 20000)
+        await this.driver.wait(until.elementIsVisible(this.driver.findElement(this.elementoData)), 20000);
     }
 
     async clicaBtnConfData(){
@@ -48,4 +48,4 @@ class ProductPage extends BasePage {
     }
 }
 
-export default ProductPage
+module.exports = ProductPage

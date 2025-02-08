@@ -1,6 +1,6 @@
 const {Given, When, Then, Before, After} = require("@cucumber/cucumber")
 const { Builder, By, Browser, until } = require("selenium-webdriver")
-const chrome = require("selenium-webdriver/chrome");
+const chrome = require("selenium-webdriver/chrome")
 const assert = require('assert')
 
 let driver

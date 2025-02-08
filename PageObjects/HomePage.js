@@ -1,5 +1,5 @@
 const BasePage = require("./BasePage")
-const By = require("selenium-webdriver".By)
+const { By, until} = require("selenium-webdriver")
 
 class HomePage extends BasePage {
 
@@ -25,12 +25,13 @@ class HomePage extends BasePage {
     }
 
     async esperarElementoLogo(){
-        await this.driver.wait(until.elementIsVisible(this.logoLink), 20000)
+        await this.driver.wait(until.elementIsVisible(this.driver.findElement(this.logoLink)), 20000);
     }
 
     async esperarElementoFooter(){
-        await this.driver.wait(until.elementIsVisible(this.thrdFooter), 20000)
+        await this.driver.wait(until.elementIsVisible(this.driver.findElement(this.thrdFooter)), 20000);
     }
 }
 
-export default HomePage
+module.exports = HomePage
+
