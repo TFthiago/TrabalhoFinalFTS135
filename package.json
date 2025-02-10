@@ -16,8 +16,12 @@
   "description": "",
   "devDependencies": {
     "@cucumber/cucumber": "^11.2.0",
+    "@wdio/cli": "^9.8.0",
+    "@wdio/local-runner": "^9.8.0",
+    "@wdio/spec-reporter": "^9.8.0",
     "jest": "^29.7.0",
     "selenium-webdriver": "^4.28.1",
-    "supertest": "^7.0.0"
+    "supertest": "^7.0.0",
+    "wdio-wait-for": "^3.1.0"
   }
 }
