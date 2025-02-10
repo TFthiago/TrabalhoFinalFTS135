@@ -6,6 +6,8 @@ exports.config = {
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
     port: 4723,
+    hostname: 'localhost',
+    path: '/',
     //
     // ==================
     // Specify Test Files
@@ -22,7 +24,8 @@ exports.config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './tests/mobile/giulianaFloresMobileSimples.js'
+        './tests/mobile/**.js'
+        // './tests/mobile/giulianaFloresMobileSimples.spec.js'
     ],
     //   ./(C:\Users\Thiago\VSCProjects\TrabalhoFinalFTS135\tests\mobile\giulianaFloresMobileSimples.js)
     //  './tests/mobile/giulianaFloresMobileSimples.js'
@@ -106,13 +109,21 @@ exports.config = {
     connectionRetryTimeout: 120000,
     //
     // Default request retries count
-    connectionRetryCount: 3,
+    connectionRetryCount: 2,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: [],
+    services: [
+        ['appium', {
+            command: 'appium',
+            args: {
+                address: 'localhost',
+                port: 4723
+            }
+        }]
+    ],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber

@@ -1,26 +1,31 @@
 //import {remote} from 'webdriverio'
 const { remote } = require('webdriverio')
 
+let browser
+
 describe('Teste Mobile', () => {
-    beforeEach(async () => {
-        await browser.reset()
-        browser = await remote({
-            capabilities: {
-                "platformName": "Android",
-                "appium:deviceName": "emulator-5554",
-                "appium:automationName": "uiautomator2",
-                "appium:appPackage": "br.com.giulianaflores.android",
-                "appium:appActivity": "br.com.giulianaflores.android.MainActivity",
-                "appium:ensureWebviewsHavePages": true,
-                "appium:nativeWebScreenshot": true,
-                "appium:newCommandTimeout": 3600,
-                "appium:connectHardwareKeyboard": true
-            }
-        })
+
+    before(async () => {
+        // browser = await remote({
+        //     capabilities: {
+        //         "platformName": "Android",
+        //         "appium:deviceName": "emulator-5554",
+        //         "appium:automationName": "uiautomator2",
+        //         "appium:appPackage": "br.com.giulianaflores.android",
+        //         "appium:appActivity": "br.com.giulianaflores.android.MainActivity",
+        //         "appium:ensureWebviewsHavePages": true,
+        //         "appium:nativeWebScreenshot": true,
+        //         "appium:newCommandTimeout": 3600,
+        //         "appium:connectHardwareKeyboard": true
+        //     }
+        // })
+        // await browser.reset()
     })
 
     afterEach(async () => {
-        await browser.deleteSession()
+        // if (browser) {
+        //     await browser.deleteSession()
+        // }
     })
 
     it('Deve abrir o app e verificar um elemento', async () => {
