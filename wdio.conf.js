@@ -110,7 +110,7 @@ exports.config = {
     //
     //
     mochaOpts: {
-        timeout: 60000 // Timeout do Mocha para os testes
+        timeout: 60000
     },
     //
     // Default request retries count

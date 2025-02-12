@@ -2,6 +2,7 @@
 //const { remote } = require('webdriverio')
 // const EC = require('wdio-wait-for');
 import { elementToBeClickable, visibilityOf } from 'wdio-wait-for'
+const login = require("../../vendors/json/gfLogin.json")
 
 
 describe('Teste Mobile', () => {
@@ -72,7 +73,7 @@ describe('Teste Mobile', () => {
         // })
 
         await el7.click()
-        await el7.addValue("tftester26@yopmail.com")
+        await el7.addValue(login.email)
 
         //alt 1
         // const el5 = await driver.$("-android uiautomator:new UiSelector().className(\"android.view.ViewGroup\").instance(18)");
@@ -82,7 +83,7 @@ describe('Teste Mobile', () => {
         const el8 = await driver.$("-android uiautomator:new UiSelector().text(\"Digite sua senha\")")
         // //const el8 = await driver.$("-android uiautomator:new UiSelector().className(\"android.view.ViewGroup\").instance(19)");
         await el8.click()
-        await el8.addValue("Tf121416@")
+        await el8.addValue(login.password)
 
         //alt 2
         // const el9 = await driver.$("-android uiautomator:new UiSelector().className(\"android.view.ViewGroup\").instance(19)");
@@ -96,7 +97,7 @@ describe('Teste Mobile', () => {
 
         //Botão Novo endereço
         const el11 = await driver.$("-android uiautomator:new UiSelector().text(\"Novo endereço\")")
-        //await el11.waitForClickable({ timeout: 10000 })
+        await browser.waitUntil(visibilityOf(el11))
         await el11.click()
         //Campo de endereço
         const el12 = await driver.$("class name:android.widget.EditText")
@@ -105,8 +106,11 @@ describe('Teste Mobile', () => {
 
     //VERIFICAR
         const el13 = await driver.$("-android uiautomator:new UiSelector().text(\"Avenida Siqueira Campos, Prado, Maceió - AL, 57010003, Brasil\")")
+        await browser.waitUntil(visibilityOf(el13))
         await el13.click()
-        // await el13.click();
+        await el13.click()
+
+        //Btn próximo
         const el14 = await driver.$("-android uiautomator:new UiSelector().text(\"Próximo\")")
         await el14.click()
 
@@ -142,10 +146,23 @@ describe('Teste Mobile', () => {
 
         //Selecionar item
     //VERIFICAR
-        const el22 = await driver.$("-android uiautomator:new UiSelector().className(\"android.view.ViewGroup\").instance(53)")
-        await browser.waitUntil(elementToBeClickable(el22))
+        // const el22 = await driver.$("-android uiautomator:new UiSelector().className(\"android.view.ViewGroup\").instance(53)")
+        // await browser.waitUntil(elementToBeClickable(el22))
+        // await el22.click()
+        // await el22.click()
+
+        //const el22 = await driver.$("accessibility id:Ramalhete com Dois Girassóis")
+        //const el22 = await driver.$("accessibility id:Ramalhete com Dois Girassóis")
+        const el22 = await driver.$('//android.view.ViewGroup[@content-desc="Ramalhete com Dois Girassóis"]');
+
+        await browser.waitUntil(visibilityOf(el22))
         await el22.click()
-        await el22.click()
+        //await el22.click()
+
+        // Alt 1
+        // const el22 = await driver.$("-android uiautomator:new UiSelector().text(\"Ramalhete com Dois Girassóis\")")
+        // await el22.click()
+        // await el22.click()
 
     //Página do produto
 
