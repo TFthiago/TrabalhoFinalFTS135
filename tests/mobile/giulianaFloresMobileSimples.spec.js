@@ -8,13 +8,16 @@ describe('Teste Mobile', () => {
 
     before(async () => {
         //await browser.reset()
+        // await driver.setTimeout({ implicit: 20000 });
+        await browser.setTimeout({ 'implicit': 20000 })
     })
 
-    afterEach(async () => {
+    after(async () => {
         //await browser.deleteSession()
     })
 
     it('Deve abrir o app e verificar um elemento', async () => {
+        
         // const el1 = await driver.$("class name:android.widget.ImageView");
         // await el1.click();
 
@@ -45,14 +48,29 @@ describe('Teste Mobile', () => {
         await el6.click()
 
         // console.log('Antes da pausa')
-        // await browser.pause(5000)
+        //await browser.pause(5000)
+        // console.log("Esperando manualmente...");
+        // await new Promise(resolve => setTimeout(resolve, 5000)); // Espera 5s
+        // console.log("Continuando...");
         // console.log('Depois da pausa')
-        //await browser.debug()
+        // await browser.debug()
 
         //Campo de email
-        const el7 = await driver.$("-android uiautomator:new UiSelector().text(\"   Digite seu e-mail ou CPF\")")
+    //    //const el7 = await driver.$('-android uiautomator:new UiSelector().textContains("Digite seu e-mail ou CPF")');
+        //Espaço normal// const el7 = await driver.$("-android uiautomator:new UiSelector().text(\"   Digite seu e-mail ou CPF\")")
+
+        //Espaço diferente//
+        const el7 = await driver.$("-android uiautomator:new UiSelector().text(\"   Digite seu e-mail ou CPF\")")
+        //await el7.waitForClickable({ timeout: 10000 })
         //const el7 = await driver.$("-android uiautomator:new UiSelector().className(\"android.view.ViewGroup\").instance(18)");
         await browser.waitUntil(visibilityOf(el7))
+        // await browser.waitUntil(async () => {
+        //     return await el7.isClickable();
+        // }, {
+        //     timeout: 20000,
+        //     timeoutMsg: "O elemento não ficou clicável dentro de 20s"
+        // })
+
         await el7.click()
         await el7.addValue("tftester26@yopmail.com")
 
@@ -62,7 +80,7 @@ describe('Teste Mobile', () => {
 
         //Campo de senha
         const el8 = await driver.$("-android uiautomator:new UiSelector().text(\"Digite sua senha\")")
-        //const el8 = await driver.$("-android uiautomator:new UiSelector().className(\"android.view.ViewGroup\").instance(19)");
+        // //const el8 = await driver.$("-android uiautomator:new UiSelector().className(\"android.view.ViewGroup\").instance(19)");
         await el8.click()
         await el8.addValue("Tf121416@")
 
@@ -85,7 +103,7 @@ describe('Teste Mobile', () => {
         await el12.click()
         await el12.addValue("57010003")
 
-
+    //VERIFICAR
         const el13 = await driver.$("-android uiautomator:new UiSelector().text(\"Avenida Siqueira Campos, Prado, Maceió - AL, 57010003, Brasil\")")
         await el13.click()
         // await el13.click();
@@ -123,7 +141,10 @@ describe('Teste Mobile', () => {
         // await el21.click();
 
         //Selecionar item
+    //VERIFICAR
         const el22 = await driver.$("-android uiautomator:new UiSelector().className(\"android.view.ViewGroup\").instance(53)")
+        await browser.waitUntil(elementToBeClickable(el22))
+        await el22.click()
         await el22.click()
 
     //Página do produto
@@ -170,3 +191,37 @@ describe('Teste Mobile', () => {
  
 
 
+//const el1 = await driver.$("-android uiautomator:new UiSelector().className(\"android.widget.LinearLayout\").instance(0)");
+// await el1.click();
+// const el2 = await driver.$("id:android:id/button2");
+// await el2.click();
+// const el3 = await driver.$("-android uiautomator:new UiSelector().className(\"android.widget.ImageView\").instance(1)");
+// await el3.click();
+// const el4 = await driver.$("-android uiautomator:new UiSelector().text(\"Pular\")");
+// await el4.click();
+// const el5 = await driver.$("-android uiautomator:new UiSelector().text(\"Entrar\")");
+// await el5.click();
+// const el6 = await driver.$("-android uiautomator:new UiSelector().text(\"   Digite seu e-mail ou CPF\")");
+// await el6.click();
+// await el6.addValue("tftester26@yopmail.com");
+// const el7 = await driver.$("-android uiautomator:new UiSelector().text(\"Digite sua senha\")");
+// await el7.click();
+// await el7.addValue("Tf121416@");
+// const el8 = await driver.$("-android uiautomator:new UiSelector().text(\"Entrar\")");
+// await el8.click();
+// const el9 = await driver.$("-android uiautomator:new UiSelector().className(\"android.view.ViewGroup\").instance(16)");
+// await el9.click();
+
+
+// it("Deve aguardar o elemento estar clicável", async () => {
+//     const el = await $('-android uiautomator:new UiSelector().text("Digite seu e-mail ou CPF")');
+
+//     await browser.waitUntil(async () => {
+//         return await el.isClickable();
+//     }, {
+//         timeout: 20000,
+//         timeoutMsg: "O elemento não ficou clicável dentro de 20s"
+//     });
+
+//     await el.click();
+// });

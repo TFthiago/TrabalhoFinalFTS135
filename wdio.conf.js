@@ -108,6 +108,11 @@ exports.config = {
     // if browser driver or grid doesn't send response
     connectionRetryTimeout: 120000,
     //
+    //
+    mochaOpts: {
+        timeout: 60000 // Timeout do Mocha para os testes
+    },
+    //
     // Default request retries count
     connectionRetryCount: 2,
     //
@@ -131,7 +136,7 @@ exports.config = {
     //
     // Make sure you have the wdio adapter package for the specific framework installed
     // before running any tests.
-    framework: undefined,
+    framework: 'mocha',
     
     //
     // The number of times to retry the entire specfile when it fails as a whole
