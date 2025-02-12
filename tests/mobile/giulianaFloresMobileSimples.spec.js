@@ -43,8 +43,11 @@ describe('Teste mobile - Giuliana Flores', () => {
         await campoSenha.addValue(login.password)
 
         //Botão Entrar 2
-        const btnEntrar2 = await driver.$("-android uiautomator:new UiSelector().text(\"Entrar\")")
-        await btnEntrar2.click()
+        // const btnEntrar2 = await driver.$("-android uiautomator:new UiSelector().text(\"Entrar\")")
+        // await btnEntrar2.click()
+        await btnEntrar.click()
+
+    //Página home
 
         //Botão Novo endereço
         const btnEnd = await driver.$("-android uiautomator:new UiSelector().text(\"Novo endereço\")")
@@ -77,15 +80,15 @@ describe('Teste mobile - Giuliana Flores', () => {
         const btnOk = await driver.$("id:android:id/button1")
         await btnOk.click()
 
-    //Página home
-
         //Campo de busca
-        const campoBusca = await driver.$("class name:android.widget.EditText")
-        await campoBusca.click()
-        await campoBusca.addValue("Ramalhete com Dois Girassóis")
+        //const campoBusca = await driver.$("class name:android.widget.EditText")
+        await campoEnd.click()
+        await campoEnd.addValue("Ramalhete com Dois Girassóis")
+        //await campoBusca.click()
+        //await campoBusca.addValue("Ramalhete com Dois Girassóis")
 
 
-        const elemProd = await driver.$('//android.view.ViewGroup[@content-desc="Ramalhete com Dois Girassóis"]');
+        const elemProd = await driver.$('//android.view.ViewGroup[@content-desc="Ramalhete com Dois Girassóis"]')
         await browser.waitUntil(visibilityOf(elemProd))
         await elemProd.click()
         await elemProd.click()
