@@ -24,7 +24,7 @@ function calcularRacaoCao(porte, peso) {
         return "Valor não suportado! Apenas maiores que 0 e menores que 100";
     }
 
-    // Se o peso não concorda com o porte esperado, retorna uma mensagem específica
+    // Peso não corresponde
     if (quantidadeRacao === 0) {
         return "Peso não corresponde ao porte informado";
     }

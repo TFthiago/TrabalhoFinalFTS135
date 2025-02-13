@@ -43,8 +43,6 @@ describe('Teste mobile - Giuliana Flores', () => {
         await campoSenha.addValue(login.password)
 
         //Botão Entrar 2
-        // const btnEntrar2 = await driver.$("-android uiautomator:new UiSelector().text(\"Entrar\")")
-        // await btnEntrar2.click()
         await btnEntrar.click()
 
     //Página home
@@ -81,12 +79,8 @@ describe('Teste mobile - Giuliana Flores', () => {
         await btnOk.click()
 
         //Campo de busca
-        //const campoBusca = await driver.$("class name:android.widget.EditText")
         await campoEnd.click()
         await campoEnd.addValue("Ramalhete com Dois Girassóis")
-        //await campoBusca.click()
-        //await campoBusca.addValue("Ramalhete com Dois Girassóis")
-
 
         const elemProd = await driver.$('//android.view.ViewGroup[@content-desc="Ramalhete com Dois Girassóis"]')
         await browser.waitUntil(visibilityOf(elemProd))
